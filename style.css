@@ -1,0 +1,107 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+
+.navbar-toggle {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.navbar-toggle .line {
+  background: #fff;
+  height: 4px;
+  margin: 6px 0;
+  transition: 0.3s;
+}
+.navbar-toggle .long {
+  width: 35px;
+}
+.navbar-toggle .short {
+  width: 20px;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  height: 100vh;
+  width: 250px;
+  background: #111;
+  padding-top: 60px;
+  transition: right 0.3s ease-in-out;
+  z-index: 999;
+}
+.sidebar.open {
+  right: 0;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
+  padding: 15px 20px;
+}
+.sidebar ul li a {
+  color: #65DDEA;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+
+.about {
+  flex: 1;
+  max-width: 50%;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s ease forwards;
+}
+.about p {
+  color: #65DDEA; 
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.three-d {
+ width: 358px;
+  height: 358px;
+  transform: perspective(800px) rotateY(10deg);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+  transition: transform 0.4s;
+}
+.three-d:hover {
+  transform: perspective(800px) rotateY(0deg) scale(1.05);
+}
