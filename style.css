@@ -7,9 +7,69 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #000;
+  background: radial-gradient(ellipse at bottom, #1a1a1a 0%, #0a0a0a 100%);
   color: #fff;
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: repeating-radial-gradient(circle at center, rgba(0, 255, 255, 0.05), rgba(0, 255, 255, 0.05) 1px, transparent 1px, transparent 100px);
+  animation: waveMotion 25s linear infinite;
+  opacity: 0.06;
+  z-index: 0;
+}
+
+
+body::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.05), transparent 70%);
+  animation: pulse 12s ease-in-out infinite;
+  z-index: 0;
+  top: -50%;
+  left: -50%;
+}
+
+
+main,
+.navbar-toggle,
+.sidebar,
+.homepage-title {
+  position: relative;
+  z-index: 1;
+}
+
+
+@keyframes waveMotion {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.06;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: scale(1.05);
+  }
 }
 
 
@@ -82,11 +142,9 @@ body {
 
 
 main {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 100vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: 100vh;
 }
 
 
@@ -177,4 +235,69 @@ main {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.homepage-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #65DDEA;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #65DDEA;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+
+
+.typing-background {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.06); /* Faint white */
+  white-space: nowrap;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  text-align: center;
+  width: 100%;
+  animation: none; /* Disabled here since we'll use JS for real typing */
+}
+
+.typing-background::after {
+  content: '|';
+  opacity: 0.06;
+  animation: blink 1s infinite;
+}
+
+
+@keyframes fadeInTyping {
+  0% {
+    content: "<html>";
+  }
+  20% {
+    content: "<style.css>";
+  }
+  40% {
+    content: "console.log('Hi');";
+  }
+  60% {
+    content: "document.querySelector()";
+  }
+  80% {
+    content: "transform: rotate(360deg);";
+  }
+  100% {
+    content: "<html>";
+  }
+}
+
+
+@keyframes blink {
+  0%, 100% { opacity: 0.06; }
+  50% { opacity: 0; }
 }
