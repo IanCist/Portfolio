@@ -1,9 +1,9 @@
-// Navbar toggle functionality
+
 document.querySelector('.navbar-toggle').addEventListener('click', () => {
     document.querySelector('.sidebar').classList.toggle('open');
 });
 
-// Typing background animation
+
 const phrases = ["<html>;", "style.css;", "console.log('Hi');", "transform: rotate(360deg);", "querySelector('.cool')"];
 const typingEl = document.getElementById("typingBg");
 let currentPhrase = 0;
@@ -31,5 +31,16 @@ function type() {
 if (typingEl) {
     type();
 }
+
+window.addEventListener('load', () => {
+    const loader = document.querySelector('.loader-wrapper');
+    setTimeout(() => {
+      loader.style.transition = 'opacity 0.6s ease';
+      loader.style.opacity = '0';
+      setTimeout(() => {
+          loader.style.display = 'none';
+      }, 600);
+    }, 2000); 
+});
 
 

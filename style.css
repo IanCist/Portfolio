@@ -8,8 +8,8 @@ body {
   font-family: 'Roboto', sans-serif;
   background: radial-gradient(ellipse at bottom, #1a1a1a 0%, #0a0a0a 100%);
   color: #fff;
-  overflow-x: hidden; 
-  min-height: 100vh;  
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 
@@ -188,9 +188,9 @@ main {
   width: 358px;
   height: 358px;
   object-fit: cover;
-
   transition: transform 0.4s ease;
   margin: 20px auto;
+  border-radius: 10%;
 }
 
 
@@ -379,5 +379,96 @@ main {
 @media (max-width: 480px) {
   .typing-background {
     font-size: 1.9rem;
+  }
+}
+
+
+
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  overflow: hidden;
+}
+
+
+.tunnel-loader {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  perspective: 1500px;
+  overflow: visible;
+}
+
+
+
+.tunnel-loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  border: 6px solid #65DDEA;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: tunnelZoom 1.8s ease-in-out infinite;
+  opacity: 0;
+  animation-duration: 1.8s;
+}
+
+.tunnel-loader span:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  margin: -50px 0 0 -50px;
+  animation-delay: 0s;
+}
+
+.tunnel-loader span:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+  animation-delay: 0.36s;
+}
+
+.tunnel-loader span:nth-child(3) {
+  width: 400px;
+  height: 400px;
+  margin: -200px 0 0 -200px;
+  animation-delay: 0.72s;
+}
+
+.tunnel-loader span:nth-child(4) {
+  width: 700px;
+  height: 700px;
+  margin: -350px 0 0 -350px;
+  animation-delay: 1.08s;
+}
+
+.tunnel-loader span:nth-child(5) {
+  width: 1000px;
+  height: 1000px;
+  margin: -500px 0 0 -500px;
+  animation-delay: 1.44s;
+}
+
+@keyframes tunnelZoom {
+  0% {
+    transform: translateZ(-200px) scale(0.3);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateZ(100px) scale(1.8);
+    opacity: 0;
   }
 }
